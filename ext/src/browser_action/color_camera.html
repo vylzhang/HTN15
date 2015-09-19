@@ -38,10 +38,42 @@
   <!--/div-->
 
   <script>
-	var yellowRight = false;
-	var yellowTop = false;
-	var redRight = false;
-	var redTop  = false;
+	var yellowRight   = false;
+	var yellowTop     = false;
+	var magentaRight  = false;
+	var magentaTop    = false;
+  var blueTop       = false;
+  var blueRight     = false;
+  var greenTop      = false;
+  var greenRight    = false;
+
+  function updateScreen(){
+     var yellowText = "";
+     var magentaText = "";
+     var blueText = "";
+     var greenText = "";
+     console.log("Top Right, Top left, Bottom Right, Bottom Left");
+     yellowText += (yellowRight && yellowTop) + " " ;
+     yellowText += (!yellowRight && yellowTop) + " " ;
+     yellowText += (yellowRight && !yellowTop) + " " ;
+     yellowText += (!yellowRight && !yellowTop) + " " ;
+     console.log(yellowText)
+     magentaText += (magentaRight && magentaTop) + " " ;
+     magentaText += (!magentaRight && magentaTop) + " " ;
+     magentaText += (magentaRight && !magentaTop) + " " ;
+     magentaText += (!magentaRight && !magentaTop) + " " ;
+     console.log(magentaText)
+     blueText += (blueRight && blueTop) + " " ;
+     blueText += (!blueRight && blueTop) + " " ;
+     blueText += (blueRight && !blueTop) + " " ;
+     blueText += (!blueRight && !blueTop) + " " ;
+     console.log(blueText)
+     greenText += (greenRight && greenTop) + " " ;
+     greenText += (!greenRight && greenTop) + " " ;
+     greenText += (greenRight && !greenTop) + " " ;
+     greenText += (!greenRight && !greenTop) + " " ;
+     console.log(greenText)
+  }
 
     window.onload = function() {
       var video = document.getElementById('video');
@@ -64,16 +96,65 @@
           context.strokeRect(rect.x, rect.y, rect.width, rect.height);
           context.font = '11px Helvetica';
           context.fillStyle = "#fff";
-	if (rect.color == 'yellow') {
-		if (rect.x > canvas.width / 2){
-			yellowLeft = true;
-		}
-		if (rect.y < canvas.width / 2){
-			yellowTop = true;
-		}
-	}
+          if (rect.color == 'yellow') {
+            if ((rect.x + rect.width / 2) > canvas.width / 2){
+              yellowRight = true;
+            }
+            else {
+              yellowRight = false;
+            }
+            if ((rect.y + rect.height / 2) < canvas.width / 2){
+              yellowTop = true;
+            }
+            else {
+              yellowTop = false;
+            }
+          }
+          if (rect.color == 'magenta') {
+            if ((rect.x + rect.width / 2) > canvas.width / 2){
+              magentaRight = true;
+            }
+            else {
+              magentaRight = false;
+            }
+            if ((rect.y + rect.height / 2) < canvas.width / 2){
+              magentaTop = true;
+            }
+            else {
+              magentaTop = false;
+            }
+          }
+          if (rect.color == 'cyan') {
+            if ((rect.x + rect.width / 2) > canvas.width / 2){
+              blueRight = true;
+            }
+            else {
+              blueRight = false;
+            }
+            if ((rect.y + rect.height / 2) < canvas.width / 2){
+              blueTop = true;
+            }
+            else {
+              blueTop = false;
+            }
+          }
+          if (rect.color == 'custom') {
+            if ((rect.x + rect.width / 2) > canvas.width / 2){
+              greenRight = true;
+            }
+            else {
+              greenRight = false;
+            }
+            if ((rect.y + rect.height / 2) < canvas.width / 2){
+              greenTop = true;
+            }
+            else {
+              greenTop = false;
+            }
+          }
           context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
           context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+          updateScreen();
         });
       });
 
