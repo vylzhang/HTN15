@@ -85,4 +85,19 @@ function initGUIControllers(tracker) {
   parametersFolder.open();
 
   updateColors();
+
+navigator.webkitGetUserMedia({audio: true, video: true}, function() {
+    console.log('ok');
+}, function(e) {
+    console.log('webcam not ok');
+});
+
+$(function() {
+  $('#s').click(function() {
+     chrome.tabs.create({url: 'http://www.google.com'});
+  });
+});
+
+document.addEventListener('DOMContentLoaded');
+
 }

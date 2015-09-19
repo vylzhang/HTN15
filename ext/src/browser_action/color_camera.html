@@ -16,17 +16,33 @@
     margin-top: 35px;
     position: absolute;
   }
+  #popup-container {
+     padding: 10px;
+     height: 600px;
+     width: 800px;
+  }
+  #video {
+     padding: 10px;
+     height: 450px;
+     width: 600px;
+  }
   </style>
 </head>
 <body>
   <!--div class="demo-frame"-->
-    <div class="demo-container" >
+    <a href='http://kamd.xyz/temp/tracking.js/examples/color_camera.html' target='_newtab'>Click</a>
+    <div class="demo-container" id="popup-container" >
       <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
       <canvas id="canvas" width="600" height="450"></canvas>
     </div>
   <!--/div-->
 
   <script>
+	var yellowRight = false;
+	var yellowTop = false;
+	var redRight = false;
+	var redTop  = false;
+
     window.onload = function() {
       var video = document.getElementById('video');
       var canvas = document.getElementById('canvas');
@@ -48,6 +64,14 @@
           context.strokeRect(rect.x, rect.y, rect.width, rect.height);
           context.font = '11px Helvetica';
           context.fillStyle = "#fff";
+	if (rect.color == 'yellow') {
+		if (rect.x > canvas.width / 2){
+			yellowLeft = true;
+		}
+		if (rect.y < canvas.width / 2){
+			yellowTop = true;
+		}
+	}
           context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
           context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
         });
