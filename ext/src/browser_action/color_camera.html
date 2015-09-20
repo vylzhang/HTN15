@@ -157,6 +157,10 @@
           context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
           context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
           updateScreen();
+          if (yellowTop && !yellowRight && blueTop && !blueRight) {
+            console.log("Go to previous page!")
+            history.go(-1)
+          }
         });
       });
 
