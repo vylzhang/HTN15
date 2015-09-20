@@ -30,7 +30,6 @@
 </head>
 <body>
   <!--div class="demo-frame"-->
-    <a href='http://kamd.xyz/temp/tracking.js/examples/color_camera.html' target='_newtab'>Click</a>
     <div class="demo-container" id="popup-container" >
       <video id="video" width="600" height="450" preload autoplay loop muted controls></video>
       <canvas id="canvas" width="600" height="450"></canvas>
@@ -38,6 +37,9 @@
   <!--/div-->
 
   <script>
+	var isGestureRestart = false;
+	var isGestureScreenshot = false;
+	var isGestureBack = false;
 	var yellowRight   = false;
 	var yellowTop     = false;
 	var magentaRight  = false;

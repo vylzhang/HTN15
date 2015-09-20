@@ -86,18 +86,13 @@ function initGUIControllers(tracker) {
 
   updateColors();
 
-navigator.webkitGetUserMedia({audio: true, video: true}, function() {
-    console.log('ok');
-}, function(e) {
-    console.log('webcam not ok');
+var curTabID = 0;
+var curWinID = 0;
+
+chrome.tabs.onSelectionChanged.addListener(function(tabId, selectInfo) {
+   curTabID = tabId;
+   curWinID = selectInfo.windowId;
 });
 
-$(function() {
-  $('#s').click(function() {
-     chrome.tabs.create({url: 'http://www.google.com'});
-  });
-});
-
-document.addEventListener('DOMContentLoaded');
 
 }
